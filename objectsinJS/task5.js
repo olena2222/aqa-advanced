@@ -1,15 +1,21 @@
 const users = [
-  { name: "Anna", email: "anna@gmail.com", age: 25 },
-  { name: "Vira", email: "vira@gmail.com", age: 24 },
-  { name: "Maria", email: "maria@gmail.com", age: 23 },
+  { name: "Anna", email: "" },
+  { lastName: null, city: "Lviv" },
+  { street: "Naukova" },
 ];
 
 for (const element of users) {
   console.log(
-    `Name is ${element.name}, email is ${element.email} and age is ${element.age}`,
+    element.name ?? "guest",
+    element.email || "guest@gmail.com",
+    element.lastName ?? "uknown",
+    element.city ?? "Kyiv",
+    element.street ?? "Kulparkivska",
   );
-};
+}
 
-for (const { name, email, age } of users) {
-  console.log(`Name is ${name}, email is ${email} and age is ${age}`);
-};
+for (const { name, email, lastName, city, street } of users) {
+  console.log(
+    `Name is ${name ?? "guest"}, email is ${email || "guest@gmail.com"}, last name is ${lastName ?? "uknown"}, city is ${city ?? "Kyiv"}, and street is ${street ?? "Kulparkivska"}`,
+  );
+}
