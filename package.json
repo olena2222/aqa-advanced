@@ -1,23 +1,32 @@
 {
-  "name": "aqa-advanced",
-  "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/olena2222/aqa-advanced#readme",
-  "bugs": {
-    "url": "https://github.com/olena2222/aqa-advanced/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/olena2222/aqa-advanced.git"
-  },
-  "license": "ISC",
-  "author": "",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "chalk": "^5.6.2"
-  }
+    "name": "aqa-advanced",
+    "version": "1.0.0",
+    "description": "",
+    "homepage": "https://github.com/olena2222/aqa-advanced#readme",
+    "bugs": {
+        "url": "https://github.com/olena2222/aqa-advanced/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/olena2222/aqa-advanced.git"
+    },
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "prettier": "npx prettier . --write",
+        "eslint": "npx eslint",
+        "prepare": "husky"
+    },
+    "dependencies": {
+        "chalk": "^5.6.2"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.2.1",
+        "globals": "^17.5.0",
+        "husky": "^9.1.7",
+        "prettier": "3.8.3"
+    }
 }
