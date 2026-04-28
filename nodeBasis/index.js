@@ -1,5 +1,5 @@
-import chalk from 'chalk'
+import chalk from 'chalk';
 
-const name = 'Sindre'
-console.log(chalk.green('Hello %s'), name)
+const name = 'Sindre';
+console.log(chalk.green('Hello %s'), name);
 //=> 'Hello Sindre'
