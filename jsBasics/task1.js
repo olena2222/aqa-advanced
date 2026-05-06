@@ -1,5 +1,5 @@
-let valueString = "good afternoon";
-let valueString1 = "good evening";
+let valueString = 'good afternoon';
+let valueString1 = 'good evening';
 let valueString2 = `good morning`;
 let valueNumber = 200;
 let isTrue = true;
