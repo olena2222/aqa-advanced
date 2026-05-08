@@ -1,8 +1,16 @@
-const { default: axios } = require('axios');
-const baseUrl = 'https://jsonplaceholder.typicode.com';
+const {
+    getComments,
+    addPost,
+    updatePost,
+    updateOneValueOnly,
+    deletePost,
+} = require('./axios.js');
+
+const data = require('./postData.json');
+const updData = require('./updatedData.json');
 
 test('Get comments', async () => {
-    const response = await axios.get(`${baseUrl}/posts/1/comments`);
+    const response = await getComments();
     console.log(response.status);
     console.log(response.data);
     expect(response.status).toBe(200);
@@ -17,65 +25,27 @@ test('Get comments', async () => {
 });
 
 test('Add post', async () => {
-    const response = await axios.post(
-        `${baseUrl}/posts`,
-        {
-            userId: 1,
-            title: 'added comment number 12',
-            body: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry1.',
-        },
-        {
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        }
-    );
+    const response = await addPost();
     console.log(response.status);
     console.log(response.data);
     expect(response.status).toBe(201);
-    expect(response.data.userId).toBe(1);
-    expect(response.data.title).toBe('added comment number 12');
-    expect(response.data.body).toBe(
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry1.'
-    );
+    expect(response.data).toHaveProperty('id');
+    expect(response.data.title).toBe(data.title);
+    expect(response.data.body).toBe(data.body);
 });
 
 test('Update post', async () => {
-    const response = await axios.put(
-        `${baseUrl}/posts/1`,
-        {
-            userId: 1,
-            title: 'added comment number 123',
-            body: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry123.',
-        },
-        {
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        }
-    );
+    const response = await updatePost();
     console.log(response.status);
     console.log(response.data);
     expect(response.status).toBe(200);
-    expect(response.data.userId).toBe(1);
-    expect(response.data.title).toBe('added comment number 123');
-    expect(response.data.body).toBe(
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry123.'
-    );
+    expect(response.data).toHaveProperty('id');
+    expect(response.data.title).toBe(updData.title);
+    expect(response.data.body).toBe(updData.body);
 });
 
 test('Update only title in post', async () => {
-    const response = await axios.patch(
-        `${baseUrl}/posts/1`,
-        {
-            title: 'added comment number 1234',
-        },
-        {
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        }
-    );
+    const response = await updateOneValueOnly();
     console.log(response.status);
     console.log(response.data);
     expect(response.status).toBe(200);
@@ -84,7 +54,7 @@ test('Update only title in post', async () => {
 });
 
 test('Delete post', async () => {
-    const response = await axios.delete(`${baseUrl}/posts/1`);
+    const response = await deletePost();
     console.log(response.status);
     console.log(response.data);
     expect(response.status).toBe(200);
